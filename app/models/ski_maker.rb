@@ -1,0 +1,2 @@
+class SkiMaker < ApplicationRecord
+end
