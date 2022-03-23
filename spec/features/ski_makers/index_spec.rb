@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'the /ski_makers page' do
+RSpec.describe 'the /ski_makers index page' do
 
   it '/ski_makers displays the name for each ski_makers' do
     ski_maker1 = SkiMaker.create(company_name: "4frnt", years_active: 13, makes_snowboards: false)
@@ -9,6 +9,7 @@ RSpec.describe 'the /ski_makers page' do
     ski_maker3 = SkiMaker.create(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
 
     visit "/ski_makers/"
+    save_and_open_page
     expect(page).to have_content(ski_maker1.company_name)
     expect(page).to have_content(ski_maker2.company_name)
     expect(page).to have_content(ski_maker3.company_name)
