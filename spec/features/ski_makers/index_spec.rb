@@ -6,7 +6,7 @@ RSpec.describe 'the /ski_makers index page' do
     ski_maker1 = SkiMaker.create(company_name: "4frnt", years_active: 13, makes_snowboards: false)
     ski_maker2 = SkiMaker.create(company_name: "Line", years_active: 15, makes_snowboards: false)
     ski_maker3 = SkiMaker.create(company_name: "Salomon", years_active: 35, makes_snowboards: true)
-    ski_maker3 = SkiMaker.create(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
+    ski_maker4 = SkiMaker.create(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
 
     visit "/ski_makers/"
     save_and_open_page
