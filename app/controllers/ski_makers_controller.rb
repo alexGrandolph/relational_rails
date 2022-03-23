@@ -4,4 +4,8 @@ class SkiMakersController < ApplicationController
     @ski_makers = SkiMaker.all
   end
 
+  def show
+    
+  end
+
 end
