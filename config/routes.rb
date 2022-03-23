@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   get '/ski_makers', to: 'ski_makers#index'
   get '/ski_makers/:id', to: 'ski_makers#show'
   get '/skis', to: 'skis#index'
+  get 'skis/:id', to: 'skis#show'
 end
