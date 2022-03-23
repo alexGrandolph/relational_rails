@@ -12,7 +12,6 @@ RSpec.describe 'the /ski_makers/:id show page' do
     expect(page).to have_content(ski_maker1.years_active)
     expect(page).to have_content(ski_maker1.makes_snowboards)
 
-
   end
 
 end
