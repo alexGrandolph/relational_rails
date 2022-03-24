@@ -7,7 +7,6 @@ class SkiMaker < ApplicationRecord
 
   def self.most_recent
     order('created_at DESC')
-
   end
 
 end

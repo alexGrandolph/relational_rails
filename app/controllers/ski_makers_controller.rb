@@ -1,7 +1,7 @@
 class SkiMakersController < ApplicationController
 
   def index
-    @ski_makers = SkiMaker.all
+    @ski_makers = SkiMaker.most_recent
   end
 
   def show

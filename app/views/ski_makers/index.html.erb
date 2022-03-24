@@ -1,5 +1,4 @@
 <h1>Ski Makers</h1>
 <% @ski_makers.each do |maker| %>
-  <p><%= maker.company_name %></p>
-
+  <%=maker.company_name%>  <strong>Added to Site: </strong><%= maker.created_at %><br><br>  
 <% end %>
