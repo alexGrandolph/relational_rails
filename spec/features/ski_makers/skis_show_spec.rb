@@ -42,7 +42,7 @@ RSpec.describe 'the /ski_makes/:id/skis' do
     saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
     visit "/ski_makers/#{icelantic.id}/skis"
-    save_and_open_page
+    # save_and_open_page
     click_on 'See All Skis!'
 
     expect(current_path).to eq("/skis/")
@@ -56,7 +56,7 @@ RSpec.describe 'the /ski_makes/:id/skis' do
     saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
     visit "/ski_makers/#{icelantic.id}/skis"
-    save_and_open_page
+    # save_and_open_page
     click_on 'See All Brands!'
 
     expect(current_path).to eq("/ski_makers/")
