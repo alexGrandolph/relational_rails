@@ -32,4 +32,17 @@ RSpec.describe 'the /skis/:id show page' do
     expect(current_path).to eq("/skis/")
   end
 
+  it 'has clickable link to ski_maker#index' do
+    icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
+    nomad = icelantic.skis.create!(model: "Nomad", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)
+    shaman = icelantic.skis.create!(model: "Shaman", ski_type: "Powder", longest_offered_cm: 209, symmetrical: false)
+    madien = icelantic.skis.create!(model: "Madien", ski_type: "Park", longest_offered_cm: 178, symmetrical: true)
+    saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
+
+    visit "/skis/#{nomad.id}"
+    click_on 'See All Brands!'
+    save_and_open_page
+    expect(current_path).to eq("/ski_makers/")
+  end
+
 end
