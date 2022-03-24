@@ -10,7 +10,7 @@ class SkiMaker < ApplicationRecord
   end
 
   def self.number_of_skis
-    skis.count
+    self.skis.count
   end
 
 end
