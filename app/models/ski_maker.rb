@@ -9,6 +9,10 @@ class SkiMaker < ApplicationRecord
     order('created_at DESC')
   end
 
+  def self.number_of_skis
+    skis.count
+  end
+
 end
 
 
