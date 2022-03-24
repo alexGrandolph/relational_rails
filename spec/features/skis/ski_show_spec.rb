@@ -10,7 +10,7 @@ RSpec.describe 'the /skis/:id show page' do
     ski_2 = ski_maker2.skis.create(model: "All MTN", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
     visit "/skis/#{ski_1.id}"
-    save_and_open_page
+    # save_and_open_page
 
     expect(page).to have_content(ski_1.model)
     expect(page).to have_content(ski_1.ski_type)
