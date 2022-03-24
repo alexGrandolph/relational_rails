@@ -1,4 +1,6 @@
+<%= link_to 'See All Skis!', '/skis/' %>
+
 <h1>Ski Makers</h1>
 <% @ski_makers.each do |maker| %>
-  <%=maker.company_name%>  <strong>Added to Site: </strong><%= maker.created_at %><br><br>  
+  <%=maker.company_name%>  <strong>Added to Site: </strong><%= maker.created_at %><br><br>
 <% end %>
