@@ -8,4 +8,9 @@ class SkiMakersController < ApplicationController
     @ski_maker = SkiMaker.find(params[:id])
   end
 
+  def children
+    makers = SkiMaker.children
+
+  end
+
 end
