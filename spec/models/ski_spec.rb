@@ -5,10 +5,11 @@ RSpec.describe Ski, type: :model do
     it { should validate_presence_of :model }
     it { should validate_presence_of :ski_type }
     it { should validate_presence_of :longest_offered_cm }
-    it { should validate_presence_of :symmetrical }
+    it { should allow_values(true, false).for(:symmetrical)}
+
   end
 
   describe 'relationships' do
     it { should belong_to :ski_maker }
   end
-end 
+end
