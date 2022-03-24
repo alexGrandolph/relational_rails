@@ -5,6 +5,11 @@ class SkiMaker < ApplicationRecord
 
   has_many :skis
 
+  def self.most_recent
+    order('created_at DESC')
+
+  end
+
 end
 
 
