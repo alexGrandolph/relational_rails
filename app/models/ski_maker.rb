@@ -1,22 +1,21 @@
 class SkiMaker < ApplicationRecord
+  validates_presence_of :company_name
+  validates_presence_of :years_active
+  validates_presence_of :makes_snowboards
+
   has_many :skis
 
   def children
-    makers = SkiMaker.ids
+    makers = SkiMaker.all
     skis = Ski.all
     array = []
-    other = []
-    skis.each do |ski|
-      makers.each do |maker|
+    makers.each do |maker|
+      skis.each do |ski|
         if maker == ski.ski_maker_id
           array << ski
-        else
-          other << ski
         end
       end
     end
-    require "pry"; binding.pry
-    array
-
+    # require "pry"; binding.pry
   end
 end

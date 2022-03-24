@@ -1,9 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe SkiMaker, type: :model do
+  describe 'validations' do
+    it { should validate_presence_of :company_name }
+    it { should validate_presence_of :years_active }
+    it { should validate_presence_of :makes_snowboards }
+  end
+
+  describe 'relationships' do
+    it { should have_many :skis }
+  end
+
   describe 'instane methods' do
     describe '#children' do
-      it 'returns all the skis associated with a given parent' do
+
+      xit 'returns all the skis associated with a given parent' do
         ski_maker1 = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
         ski_maker2 = SkiMaker.create!(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
 
@@ -16,8 +27,6 @@ RSpec.describe SkiMaker, type: :model do
         expect(ski_maker1.children).to be_a(Array)
         expect(ski_maker1.children.first).to be_a(Ski)
         expect(ski_maker1.children).to eq([ski_1, ski_2, ski_3, ski_4])
-
-
       end
     end
   end
