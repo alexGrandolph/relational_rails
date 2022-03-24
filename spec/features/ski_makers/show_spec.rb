@@ -21,7 +21,7 @@ RSpec.describe 'the /ski_makers/:id show page' do
     ct = faction.skis.create!(model: "CT 2.0", ski_type: "Backcountry", longest_offered_cm: 213, symmetrical: false)
 
     visit "/ski_makers/#{faction.id}"
-    save_and_open_page
+    # save_and_open_page
 
     expect(page).to have_content('Skis Available: 3')
   end
