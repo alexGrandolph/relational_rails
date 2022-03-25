@@ -5,3 +5,4 @@
 <p>Years Active: <%= @ski_maker.years_active %></p>
 <p>Makes Snowboards?: <%= @ski_maker.makes_snowboards %></p>
 <p>Skis Available: <%= @count %></p>
+<%= link_to 'See These Skis!', "/ski_makers/#{@ski_maker.id}/skis" %>
