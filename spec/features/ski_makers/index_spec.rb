@@ -55,8 +55,8 @@ RSpec.describe 'the /ski_makers index page' do
   end
 
 
-    xit 'has clickable link to ski_makers#new' do
-      icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
+  it 'has clickable link to ski_makers#new' do
+    icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
       nomad = icelantic.skis.create!(model: "Nomad", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)
       shaman = icelantic.skis.create!(model: "Shaman", ski_type: "Powder", longest_offered_cm: 209, symmetrical: false)
       madien = icelantic.skis.create!(model: "Madien", ski_type: "Park", longest_offered_cm: 178, symmetrical: true)
@@ -65,7 +65,7 @@ RSpec.describe 'the /ski_makers index page' do
       visit "/ski_makers/"
       click_on 'Add a Brand'
 
-      expect(current_path).to eq("/ski_makers/new")
+      expect(current_path).to eq("/ski_makers/new/")
     end
 
 

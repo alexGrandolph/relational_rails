@@ -16,6 +16,10 @@ class SkiMakersController < ApplicationController
     @skis = @ski_maker.skis
   end
 
+  def new
+
+  end
+
 
 
 end
