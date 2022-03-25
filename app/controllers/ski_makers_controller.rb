@@ -17,7 +17,16 @@ class SkiMakersController < ApplicationController
   end
 
   def new
+  end
 
+  def create
+    new_maker = SkiMaker.new({
+      company_name: params[:ski_maker][:company_name],
+      years_active: params[:ski_maker][:years_active],
+      makes_snowboards: params[:ski_maker][:makes_snowboards]
+      })
+    new_maker.save
+    redirect_to '/ski_makers'
   end
 
 
