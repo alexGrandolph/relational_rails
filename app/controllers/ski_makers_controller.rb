@@ -26,7 +26,7 @@ class SkiMakersController < ApplicationController
       makes_snowboards: params[:ski_maker][:makes_snowboards]
       })
     new_maker.save
-    redirect_to '/ski_makers'
+    redirect_to '/ski_makers/'
   end
 
 
