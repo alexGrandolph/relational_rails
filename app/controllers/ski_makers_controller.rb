@@ -31,6 +31,18 @@ class SkiMakersController < ApplicationController
 
   def edit
     @ski_maker = SkiMaker.find(params[:id])
+  end
+
+  def update
+    # require "pry"; binding.pry
+    updated_maker = SkiMaker.find(params[:id])
+    updated_maker.update({
+      company_name: params[:ski_maker][:company_name],
+      years_active: params[:ski_maker][:years_active],
+      makes_snowboards: params[:ski_maker][:makes_snowboards]
+      })
+    updated_maker.save
+    redirect_to "/ski_makers/#{updated_maker.id}"
 
   end
 

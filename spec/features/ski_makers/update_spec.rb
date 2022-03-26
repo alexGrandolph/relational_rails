@@ -26,11 +26,6 @@ RSpec.describe 'can update a ski_maker(parent)' do
       visit "ski_makers/#{line.id}"
       click_on "Edit This Brand"
 
-      # fill_in 'Company Name:', with: 'Line Skis'
-      # fill_in 'Years Active:', with: 22
-      # fill_in 'Do They Make Snowboards? (true or false):', with: false
-      save_and_open_page
-
       expect(current_path).to eq("/ski_makers/#{line.id}/edit")
       expect(page).to have_content('Company Name:')
       expect(page).to have_content('Years Active:')
@@ -42,7 +37,6 @@ RSpec.describe 'can update a ski_maker(parent)' do
       blade = line.skis.create!(model: "BLADE", ski_type: "Powder", longest_offered_cm: 215, symmetrical: false)
       tom = line.skis.create!(model: "Tom Wallisch Pro", ski_type: "Park", longest_offered_cm: 205, symmetrical: true)
       chronic = line.skis.create!(model: "Chronic", ski_type: "Park", longest_offered_cm: 204, symmetrical: true)
-
       visit "ski_makers/#{line.id}"
       click_on "Edit This Brand"
 
@@ -55,9 +49,8 @@ RSpec.describe 'can update a ski_maker(parent)' do
       save_and_open_page
 
       expect(current_path).to eq("/ski_makers/#{line.id}")
-      expect(page).to have_content('Company Name: Line Skis')
-      expect(page).to have_content('Years Active: 22')
-      expect(page).to have_content('Do They Make Snowboards? (true or false): false')
+      expect(page).to have_content('Line Skis')
+      expect(page).to have_content("Years Active: 22")
     end
 
 
