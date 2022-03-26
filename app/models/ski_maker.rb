@@ -14,6 +14,3 @@ class SkiMaker < ApplicationRecord
   end
 
 end
-
-
-# rails g model Ski ski_maker:references model:string ski_type:string
