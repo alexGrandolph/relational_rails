@@ -11,7 +11,7 @@ RSpec.describe 'can update a ski_maker(parent)' do
       chronic = line.skis.create!(model: "Chronic", ski_type: "Park", longest_offered_cm: 204, symmetrical: true)
 
       visit "ski_makers/#{line.id}"
-      click_on "Update This Brand"
+      click_on "Edit This Brand"
 
       expect(current_path).to eq("/ski_makers/#{line.id}/edit")
 

@@ -6,3 +6,5 @@
 <p>Makes Snowboards?: <%= @ski_maker.makes_snowboards %></p>
 <p>Skis Available: <%= @count %></p>
 <%= link_to 'See These Skis!', "/ski_makers/#{@ski_maker.id}/skis" %>
+<br><br>
+<%= link_to 'Edit This Brand', "/ski_makers/#{@ski_maker.id}/edit" %>
