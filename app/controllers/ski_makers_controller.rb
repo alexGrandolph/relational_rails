@@ -29,6 +29,10 @@ class SkiMakersController < ApplicationController
     redirect_to '/ski_makers/'
   end
 
+  def edit
+
+  end
+
 
 
 end
