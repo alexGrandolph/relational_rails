@@ -4,7 +4,14 @@
   <h4>Edit This Brand</h4>
 
   <label for="companyname">Company Name:</label><br>
-  <input type="text" id="companyname" name="ski_maker[company_name]" value="<%= @ski_maker.company_name"><br>
+  <input type="text" id="companyname" name="ski_maker[company_name]" value="<%= @ski_maker.company_name %>"><br><br>
 
+  <label for="yearsactive">Years Active:</label><br>
+  <input type="integer" id="yearsactive" name="ski_maker[years_active]" value="<%= @ski_maker.years_active %>"><br><br>
+
+  <label for="snowboards">Do They Make Snowboards? (true or false):</label><br>
+  <input type="boolean" id="snowboards" name="ski_maker[makes_snowboards]" value="<%= @ski_maker.makes_snowboards %>"><br><br>
+
+  <input type="submit" value="Update"/>
 
 </form>
