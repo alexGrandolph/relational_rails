@@ -57,14 +57,14 @@ RSpec.describe 'New Ski Maker' do
       visit "/ski_makers/#{icelantic.id}/skis/new"
 
       fill_in 'Model Name:', with: 'Pioneer'
-      # fill_in "Ski Type:", with: "All Mountain"
+      fill_in "Ski Type:", with: "All Mountain"
       fill_in 'Longest Offered Ski (cm):', with: 184
       fill_in 'Is This Ski 100% Symmetrical (true or false):', with: false
       click_on 'Create Skis'
       save_and_open_page
 
-      expect(current_path).to eq("/ski_makers/#{icelantic.id}/skis")
-      expect(page).to have_content("Pioneer")
+      expect(current_path).to eq("/ski_makers/#{icelantic.id}/skis/")
+      # expect(page).to have_content("Model Name: Pioneer")
 
 
 
