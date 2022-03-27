@@ -8,4 +8,8 @@ class SkisController < ApplicationController
     @ski = Ski.find(params[:id])
   end
 
+  def new
+
+  end
+
 end
