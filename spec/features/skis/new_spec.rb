@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe 'New Ski Maker' do
+RSpec.describe 'New Ski' do
 
-  describe 'as a visitor' do
+  describe 'as a visitor on ski_makers/:id/skis' do
     it 'has a link to create a new ski (child)' do
       icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
       nomad = icelantic.skis.create!(model: "Nomad", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)
