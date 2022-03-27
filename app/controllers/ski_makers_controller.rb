@@ -46,7 +46,7 @@ class SkiMakersController < ApplicationController
   end
 
   def new_ski
-
+    @ski_maker = SkiMaker.find(params[:id])
   end
 
 
