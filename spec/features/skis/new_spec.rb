@@ -26,8 +26,24 @@ RSpec.describe 'New Ski Maker' do
       visit "/ski_makers/#{icelantic.id}/skis"
 
       click_on "Create Skis"
-      save_and_open_page
+      # save_and_open_page
       expect(current_path).to eq("/ski_makers/#{icelantic.id}/skis/new/")
+    end
+
+    it 'can see the form to add a new pair of skis' do
+      icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
+      nomad = icelantic.skis.create!(model: "Nomad", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)
+      shaman = icelantic.skis.create!(model: "Shaman", ski_type: "Powder", longest_offered_cm: 209, symmetrical: false)
+      madien = icelantic.skis.create!(model: "Madien", ski_type: "Park", longest_offered_cm: 178, symmetrical: true)
+      saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
+
+      visit "/ski_makers/#{icelantic.id}/skis/new"
+      save_and_open_page
+      expect(page).to have_content("Model Name:")
+      expect(page).to have_content("Ski Type:")
+      expect(page).to have_content("Longest Offered Ski (cm):")
+      expect(page).to have_content("Is This Ski 100% Symmetrical (true or false):")
+
     end
 
 
