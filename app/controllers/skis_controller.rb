@@ -9,7 +9,7 @@ class SkisController < ApplicationController
   end
 
   def edit
-
+    @ski = Ski.find(params[:id])
   end
 
 end
