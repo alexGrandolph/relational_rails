@@ -61,7 +61,7 @@ RSpec.describe 'New Ski' do
       fill_in 'Longest Offered Ski (cm):', with: 184
       fill_in 'Is This Ski 100% Symmetrical (true or false):', with: false
       click_on 'Create Skis'
-      save_and_open_page
+      # save_and_open_page
 
       expect(current_path).to eq("/ski_makers/#{icelantic.id}/skis/")
       expect(page).to have_content("Model Name: Pioneer")
