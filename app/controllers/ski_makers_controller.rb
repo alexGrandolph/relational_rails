@@ -43,6 +43,9 @@ class SkiMakersController < ApplicationController
       })
     updated_maker.save
     redirect_to "/ski_makers/#{updated_maker.id}"
+  end
+
+  def new_ski
 
   end
 
