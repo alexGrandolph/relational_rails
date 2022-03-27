@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   patch '/ski_makers/:id', to: 'ski_makers#update'
 
   get '/skis/:id/edit', to: 'skis#edit'
+  patch '/skis/:id', to: 'skis#update'
   get '/skis', to: 'skis#index'
   get '/skis/:id', to: 'skis#show'
   get '/ski_makers/:id/skis', to: 'ski_makers#skis'
