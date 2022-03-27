@@ -1,1 +1,22 @@
 <h1>Update This Ski</h1>
+
+<form action="/skis/<%= @ski.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH" />
+
+  <h4><%= @ski.model %></h4>
+  <label for="model">Model Name:</label><br>
+  <input type="text" id="model" name="ski[model]" value="<%= @ski.model %>"><br><br>
+
+  <label for="ski_type">Ski Type:</label><br>
+  <input type="text" id="ski_type" name="ski[ski_type]" value="<%= @ski.ski_type %>"><br><br>
+
+  <label for="longest">Longest Offered Ski (cm):</label><br>
+  <input type="integer" id="longest" name="ski[longest_offered_cm]" value="<%= @ski.longest_offered_cm %>"><br><br>
+
+  <label for="symmetrical">Is This Ski 100% Symmetrical (true or false):</label><br>
+
+  <input type="boolean" id="symmetrical" name="ski[symmetrical]" value="<%= @ski.symmetrical %>"><br><br>
+  <input type="submit" value="Update Ski"/>
+
+</form>

@@ -27,7 +27,7 @@ RSpec.describe 'Update a Ski' do
       click_on "Update Ski"
       save_and_open_page
 
-      expect(current_path).to eq("/skis/#{nomad.id}/edit/")
+      expect(current_path).to eq("/skis/#{nomad.id}/edit")
       expect(page).to have_content("Update This Ski")
       expect(page).to have_content("Model Name:")
       expect(page).to have_content("Ski Type:")
