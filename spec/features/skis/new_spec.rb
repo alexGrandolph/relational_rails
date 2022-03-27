@@ -26,13 +26,8 @@ RSpec.describe 'New Ski Maker' do
       visit "/ski_makers/#{icelantic.id}/skis"
 
       click_on "Create Skis"
-      
+
       expect(current_path).to eq("/ski_makers/#{icelantic.id}/skis/new")
-
-
-
-
-
     end
 
 
