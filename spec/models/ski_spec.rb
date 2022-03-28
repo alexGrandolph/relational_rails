@@ -46,6 +46,9 @@ RSpec.describe Ski, type: :model do
   describe 'methods' do
 
     it 'returns all records with true in symmetrical column (boolean)' do
+      Ski.destroy_all
+      SkiMaker.destroy_all
+
       _1000 = SkiMaker.create!(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
       icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
 
