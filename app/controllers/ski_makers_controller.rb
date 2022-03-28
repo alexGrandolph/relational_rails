@@ -11,10 +11,10 @@ class SkiMakersController < ApplicationController
 
   end
 
-  def skis
-    @ski_maker = SkiMaker.find(params[:id])
-    @skis = @ski_maker.skis
-  end
+  # def skis
+  #   @ski_maker = SkiMaker.find(params[:id])
+  #   @skis = @ski_maker.skis
+  # end
 
   def new
   end
