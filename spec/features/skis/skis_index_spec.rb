@@ -95,7 +95,7 @@ RSpec.describe 'the /skis index page' do
 
     visit "/skis/"
 
-    click_on "Edit"
+    click_on "Edit #{agent.model}"
     save_and_open_page
 
     expect(current_path).to eq("/skis/#{agent.id}/edit")

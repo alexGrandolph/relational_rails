@@ -7,5 +7,6 @@
 <h3>Model Name: <%= ski.model %></h3>
   <p><a>Ski Type: <%= ski.ski_type %></a><br>
   <a>Longest Size Available: <%= ski.longest_offered_cm %></a><br>
-  <a>Symmetrical?: <%= ski.symmetrical %></a></p><br><br>
+  <a>Symmetrical?: <%= ski.symmetrical %></a></p>
+  <a <%= link_to "Edit #{ski.model}", "/skis/#{ski.id}/edit" %></a>
 <% end %>
