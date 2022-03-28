@@ -82,9 +82,24 @@ RSpec.describe 'the /ski_makes/:id/skis' do
     # save_and_open_page
     expect("Model Name: #{madien.model}").to appear_before("Model Name: #{nomad.model}")
     expect("Model Name: #{saba.model}").to appear_before("Model Name: #{shaman.model}")
+  end
 
+  it 'has a link to edit each ski, takes to that skis edit page' do
+    Ski.destroy_all
+    SkiMaker.destroy_all
 
+    icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
 
+    nomad = icelantic.skis.create!(model: "Nomad", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)
+    shaman = icelantic.skis.create!(model: "Shaman", ski_type: "Powder", longest_offered_cm: 209, symmetrical: false)
+    madien = icelantic.skis.create!(model: "Madien", ski_type: "Park", longest_offered_cm: 178, symmetrical: true)
+    saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
+
+    visit "/ski_makers/#{icelantic.id}/skis"
+
+    click_on "Edit #{nomad.model}"
+
+    expect(current_path).to eq("/skis/#{nomad.id}/edit")
   end
 
 # bundle exec rspec spec/features/ski_makers/skis/index_spec.rb:65
