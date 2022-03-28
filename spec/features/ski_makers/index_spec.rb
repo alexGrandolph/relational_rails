@@ -96,7 +96,7 @@ RSpec.describe 'the /ski_makers index page' do
       visit "/ski_makers/"
 
       click_on 'Edit'
-      expect(current_path).to eq("ski_makers/#{line.id}/edit")
+      expect(current_path).to eq("/ski_makers/#{line.id}/edit")
     end
 
 

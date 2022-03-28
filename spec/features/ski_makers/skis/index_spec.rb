@@ -79,7 +79,7 @@ RSpec.describe 'the /ski_makes/:id/skis' do
     click_on 'Sort Alphabetically'
     expect(current_path).to eq("/ski_makers/#{icelantic.id}/skis")
 
-    save_and_open_page
+    # save_and_open_page
     expect("Model Name: #{madien.model}").to appear_before("Model Name: #{nomad.model}")
     expect("Model Name: #{saba.model}").to appear_before("Model Name: #{shaman.model}")
 
