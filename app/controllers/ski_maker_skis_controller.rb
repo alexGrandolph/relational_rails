@@ -3,12 +3,13 @@ class SkiMakerSkisController < ApplicationController
 
   def index
     # @ski_maker = SkiMaker.find(params[:id])
-    require "pry"; binding.pry
-    if params[:order] 
-      unsorted = SkiMaker.find(params[:id])
-      @ski_maker = unsorted.skis.sort_alpha
+    if params[:sort] == 'alpha'
+      @ski_maker = SkiMaker.find(params[:id])
+      @skis = @ski_maker.sort_alpha
+      # require "pry"; binding.pry
     else
       @ski_maker = SkiMaker.find(params[:id])
+      @skis = @ski_maker.skis
     end
   end
 
