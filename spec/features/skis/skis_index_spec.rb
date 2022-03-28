@@ -2,7 +2,38 @@ require 'rails_helper'
 
 RSpec.describe 'the /skis index page' do
 
-  it '/skis displays all skis with their attributes' do
+  it 'displays all skis with true in symmetrical column' do
+    Ski.destroy_all
+    SkiMaker.destroy_all
+
+    _1000 = SkiMaker.create!(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
+    icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
+
+    park = _1000.skis.create!(model: "Park", ski_type: "Park/Pipe", longest_offered_cm: 199, symmetrical: true)
+    all_mtn = _1000.skis.create!(model: "All MTN", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
+
+    nomad = icelantic.skis.create!(model: "Nomad", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)
+    shaman = icelantic.skis.create!(model: "Shaman", ski_type: "Powder", longest_offered_cm: 209, symmetrical: false)
+
+    visit "/skis/"
+    save_and_open_page
+    expect(page).to have_content("Model Name: #{park.model}")
+    expect(page).to have_content("Sky Type: #{park.ski_type}")
+    expect(page).to have_content("Longest Size Available: #{park.longest_offered_cm}")
+    expect(page).to have_content("Symmetrical?: #{park.symmetrical}")
+    expect(page).to have_content("Model Name: #{nomad.model}")
+    expect(page).to have_content("Sky Type: #{nomad.ski_type}")
+    expect(page).to have_content("Longest Size Available: #{nomad.longest_offered_cm}")
+    expect(page).to have_content("Symmetrical?: #{nomad.symmetrical}")
+
+    expect(page).to_not have_content("Model Name: #{all_mtn.model}")
+    expect(page).to_not have_content("Model Name: #{nomad.model}")
+
+
+
+  end
+
+  xit '/skis displays all skis with their attributes' do
     ski_maker1 = SkiMaker.create(company_name: "Line", years_active: 15, makes_snowboards: false)
     ski_maker2 = SkiMaker.create(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
 
