@@ -1,7 +1,18 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  post '/ski_makers/:id/skis', to: 'ski_makers#create_ski'
+  get '/ski_makers/:id/skis/new', to: 'ski_makers#new_ski'
+
   get '/ski_makers', to: 'ski_makers#index'
+  get '/ski_makers/new', to: 'ski_makers#new'
+  post '/ski_makers', to: 'ski_makers#create'
   get '/ski_makers/:id', to: 'ski_makers#show'
+  get '/ski_makers/:id/edit', to: 'ski_makers#edit'
+  patch '/ski_makers/:id', to: 'ski_makers#update'
+
+  get '/skis/:id/edit', to: 'skis#edit'
+  patch '/skis/:id', to: 'skis#update'
+  
   get '/skis', to: 'skis#index'
   get '/skis/:id', to: 'skis#show'
   get '/ski_makers/:id/skis', to: 'ski_makers#skis'

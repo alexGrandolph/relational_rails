@@ -9,11 +9,8 @@ class SkiMaker < ApplicationRecord
     order('created_at DESC')
   end
 
-  def self.number_of_skis
-    self.skis.count
-  end
+  # def self.number_of_skis
+  #   self.skis.count
+  # end
 
 end
-
-
-# rails g model Ski ski_maker:references model:string ski_type:string

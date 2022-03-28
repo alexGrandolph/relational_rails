@@ -4,3 +4,8 @@
 <p>Ski Type: <%= @ski.ski_type %><br>
 Largest Available Size: <%= @ski.longest_offered_cm %><br>
 Symmetrical? <%= @ski.symmetrical %></p>
+
+<br>
+<br>
+
+<%= link_to 'Update Ski', "/skis/#{@ski.id}/edit" %>
