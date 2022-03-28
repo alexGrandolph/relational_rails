@@ -6,8 +6,8 @@
 
 <h1><%= @ski_maker.company_name %></h1>
 <% @skis.each do |ski| %>
-  <h3> Model Name:<%= " #{ski.model}"%></h3><strong>Ski Type: </strong><%=" #{ski.ski_type}"%><br><strong>Longest Offered Size: </strong><%=" #{ski.longest_offered_cm}"%><br><strong>100% Symmetrical? </strong><%=" #{ski.symmetrical}"%>
-
+  <h3> Model Name:<%= " #{ski.model}"%></h3><strong>Ski Type: </strong><%=" #{ski.ski_type}"%><br><strong>Longest Offered Size: </strong><%=" #{ski.longest_offered_cm}"%><br><strong>100% Symmetrical? </strong><%=" #{ski.symmetrical}"%><br>
+  <a <br><%= link_to "Edit #{ski.model}", "/skis/#{ski.id}/edit" %></a> <br>
 <% end %>
 <br><br>
 <%= link_to 'Create Skis', "/ski_makers/#{@ski_maker.id}/skis/new/"%>
