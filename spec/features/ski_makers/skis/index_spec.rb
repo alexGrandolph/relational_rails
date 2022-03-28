@@ -62,6 +62,6 @@ RSpec.describe 'the /ski_makes/:id/skis' do
     expect(current_path).to eq("/ski_makers/")
   end
 
-  
+
 
 end
