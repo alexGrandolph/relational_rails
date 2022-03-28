@@ -18,16 +18,16 @@ RSpec.describe 'the /skis index page' do
     visit "/skis/"
     save_and_open_page
     expect(page).to have_content("Model Name: #{park.model}")
-    expect(page).to have_content("Sky Type: #{park.ski_type}")
+    expect(page).to have_content("Ski Type: #{park.ski_type}")
     expect(page).to have_content("Longest Size Available: #{park.longest_offered_cm}")
     expect(page).to have_content("Symmetrical?: #{park.symmetrical}")
     expect(page).to have_content("Model Name: #{nomad.model}")
-    expect(page).to have_content("Sky Type: #{nomad.ski_type}")
+    expect(page).to have_content("Ski Type: #{nomad.ski_type}")
     expect(page).to have_content("Longest Size Available: #{nomad.longest_offered_cm}")
     expect(page).to have_content("Symmetrical?: #{nomad.symmetrical}")
 
     expect(page).to_not have_content("Model Name: #{all_mtn.model}")
-    expect(page).to_not have_content("Model Name: #{nomad.model}")
+    expect(page).to_not have_content("Model Name: #{shaman.model}")
 
 
 
