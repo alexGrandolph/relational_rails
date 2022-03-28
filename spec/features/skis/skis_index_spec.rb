@@ -79,4 +79,28 @@ RSpec.describe 'the /skis index page' do
     expect(current_path).to eq("/ski_makers/")
   end
 
+  it 'has a link to edit a ski next to each ski, takes to that skis edit page' do
+    Ski.destroy_all
+    SkiMaker.destroy_all
+
+    faction = SkiMaker.create!(company_name: "Faction", years_active: 13, makes_snowboards: false)
+    agent = faction.skis.create!(model: "Agent", ski_type: "Park", longest_offered_cm: 195, symmetrical: true)
+    prodigy = faction.skis.create!(model: "Prodigy", ski_type: "Park", longest_offered_cm: 198, symmetrical: true)
+    ct = faction.skis.create!(model: "CT 2.0", ski_type: "Backcountry", longest_offered_cm: 213, symmetrical: false)
+
+    _1000 = SkiMaker.create!(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
+    park = _1000.skis.create!(model: "Park", ski_type: "Park/Pipe", longest_offered_cm: 199, symmetrical: true)
+    all_mtn = _1000.skis.create!(model: "All MTN", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
+    powder = _1000.skis.create!(model: "PWDER", ski_type: "Powder/Backcountry", longest_offered_cm: 211, symmetrical: false)
+
+    visit "/skis/"
+
+    click_on "Edit"
+    save_and_open_page
+
+    expect(current_path).to eq("/skis/#{agent.id}/edit")
+
+
+  end
+
 end
