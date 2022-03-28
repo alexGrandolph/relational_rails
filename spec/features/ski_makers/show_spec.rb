@@ -65,5 +65,30 @@ RSpec.describe 'the /ski_makers/:id show page' do
     expect(current_path).to eq("/ski_makers/#{icelantic.id}/skis")
   end
 
+  it 'has a clickable link to destroy the #show pages ski maker' do
+    Ski.destroy_all
+    SkiMaker.destroy_all
+
+    salomon = SkiMaker.create!(company_name: "Salomon", years_active: 35, makes_snowboards: true)
+    spark = salomon.skis.create!(model: "QST Spark", ski_type: "Park", longest_offered_cm: 189, symmetrical: true)
+    blank = salomon.skis.create!(model: "QST Blank", ski_type: "All Mountain", longest_offered_cm: 202, symmetrical: false)
+
+    faction = SkiMaker.create!(company_name: "Faction", years_active: 13, makes_snowboards: false)
+    agent = faction.skis.create!(model: "Agent", ski_type: "Park", longest_offered_cm: 195, symmetrical: true)
+    prodigy = faction.skis.create!(model: "Prodigy", ski_type: "Park", longest_offered_cm: 198, symmetrical: true)
+    ct = faction.skis.create!(model: "CT 2.0", ski_type: "Backcountry", longest_offered_cm: 213, symmetrical: false)
+
+    visit "/ski_makers/#{salomon.id}"
+    click_on 'Delete'
+
+    expect(current_path).to eq("/ski_makers")
+    expect(page).to_not have_content("#{salomon.company_name}")
+    expect(page).to_not have_content("#{salomon.created_at}")
+
+    expect(page).to have_content("#{faction.company_name}")
+    expect(page).to have_content("#{faction.created_at}")
+
+  end
+
 
 end
