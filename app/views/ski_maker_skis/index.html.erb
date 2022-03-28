@@ -1,10 +1,13 @@
 <%= link_to 'See All Skis!', '/skis/' %> | <%= link_to 'See All Brands!', '/ski_makers/' %>
+<br>
+<br>
+<%= link_to 'Sort Alphabetically', "/ski_makers/#{@ski_maker.id}/skis?sort=alpha", method: :get %>
 
 
 <h1><%= @ski_maker.company_name %></h1>
-<% @skis.each do |ski| %>
+<% @ski_maker.skis.each do |ski| %>
   <h3> Model Name:<%= " #{ski.model}"%></h3><strong>Ski Type: </strong><%=" #{ski.ski_type}"%><br><strong>Longest Offered Size: </strong><%=" #{ski.longest_offered_cm}"%><br><strong>100% Symmetrical? </strong><%=" #{ski.symmetrical}"%>
 
 <% end %>
 <br><br>
-<%= link_to 'Create Skis', "/ski_makers/#{@ski_maker.id}/skis/new/" %>
+<%= link_to 'Create Skis', "/ski_makers/#{@ski_maker.id}/skis/new/"%>

@@ -12,6 +12,10 @@ class Ski < ApplicationRecord
 
   end
 
+  def self.sort_alpha
+    Ski.order(:model)
+  end
 
-  
+
+
 end

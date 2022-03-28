@@ -16,7 +16,7 @@ RSpec.describe 'the /skis index page' do
     shaman = icelantic.skis.create!(model: "Shaman", ski_type: "Powder", longest_offered_cm: 209, symmetrical: false)
 
     visit "/skis/"
-    save_and_open_page
+    # save_and_open_page
     expect(page).to have_content("Model Name: #{park.model}")
     expect(page).to have_content("Ski Type: #{park.ski_type}")
     expect(page).to have_content("Longest Size Available: #{park.longest_offered_cm}")
@@ -33,25 +33,25 @@ RSpec.describe 'the /skis index page' do
 
   end
 
-  xit '/skis displays all skis with their attributes' do
-    ski_maker1 = SkiMaker.create(company_name: "Line", years_active: 15, makes_snowboards: false)
-    ski_maker2 = SkiMaker.create(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
-
-    ski_1 = ski_maker1.skis.create(model: "Chronic", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)
-    ski_2 = ski_maker2.skis.create(model: "All MTN", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
-
-    visit "/skis/"
-    # save_and_open_page
-
-    expect(page).to have_content(ski_1.model)
-    expect(page).to have_content(ski_1.ski_type)
-    expect(page).to have_content(ski_1.longest_offered_cm)
-    expect(page).to have_content(ski_1.symmetrical)
-    expect(page).to have_content(ski_2.model)
-    expect(page).to have_content(ski_2.ski_type)
-    expect(page).to have_content(ski_2.longest_offered_cm)
-    expect(page).to have_content(ski_2.symmetrical)
-  end
+  # xit '/skis displays all skis with their attributes' do
+  #   ski_maker1 = SkiMaker.create(company_name: "Line", years_active: 15, makes_snowboards: false)
+  #   ski_maker2 = SkiMaker.create(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
+  #
+  #   ski_1 = ski_maker1.skis.create(model: "Chronic", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)
+  #   ski_2 = ski_maker2.skis.create(model: "All MTN", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
+  #
+  #   visit "/skis/"
+  #   # save_and_open_page
+  #
+  #   expect(page).to have_content(ski_1.model)
+  #   expect(page).to have_content(ski_1.ski_type)
+  #   expect(page).to have_content(ski_1.longest_offered_cm)
+  #   expect(page).to have_content(ski_1.symmetrical)
+  #   expect(page).to have_content(ski_2.model)
+  #   expect(page).to have_content(ski_2.ski_type)
+  #   expect(page).to have_content(ski_2.longest_offered_cm)
+  #   expect(page).to have_content(ski_2.symmetrical)
+  # end
 
   it 'has clickable link to skis#index' do
     icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
