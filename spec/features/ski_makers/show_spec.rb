@@ -79,7 +79,7 @@ RSpec.describe 'the /ski_makers/:id show page' do
     ct = faction.skis.create!(model: "CT 2.0", ski_type: "Backcountry", longest_offered_cm: 213, symmetrical: false)
 
     visit "/ski_makers/#{salomon.id}"
-    click_on 'Delete'
+    click_on 'DELETE'
 
     expect(current_path).to eq("/ski_makers")
     expect(page).to_not have_content("#{salomon.company_name}")
