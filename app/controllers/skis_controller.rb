@@ -1,7 +1,8 @@
 class SkisController < ApplicationController
 
   def index
-    @skis = Ski.all
+    # @skis = Ski.all
+    @skis = Ski.all_true
   end
 
   def show

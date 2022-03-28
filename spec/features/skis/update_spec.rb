@@ -53,7 +53,7 @@ RSpec.describe 'Update a Ski' do
       fill_in 'Is This Ski 100% Symmetrical (true or false):', with: false
       click_on 'Update Ski'
 
-      save_and_open_page
+      # save_and_open_page
       expect(current_path).to eq("/skis/#{nomad.id}")
       expect(page).to have_content("Pioneer")
       expect(page).to have_content("Ski Type: All Mountain")

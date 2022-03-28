@@ -37,5 +37,20 @@ RSpec.describe SkiMaker, type: :model do
 
       expect(SkiMaker.most_recent).to eq([ski_maker3, ski_maker4, ski_maker2, ski_maker1])
     end
+
+    it 'sorts a makers skis by model name alphabetically' do
+      Ski.destroy_all
+      SkiMaker.destroy_all
+
+      icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
+
+      nomad = icelantic.skis.create!(model: "Nomad", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)
+      shaman = icelantic.skis.create!(model: "Shaman", ski_type: "Powder", longest_offered_cm: 209, symmetrical: false)
+      maiden = icelantic.skis.create!(model: "Madien", ski_type: "Park", longest_offered_cm: 178, symmetrical: true)
+      saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
+
+      expect(icelantic.sort_alpha).to eq([maiden, nomad, saba, shaman])
+
+    end
   end
 end

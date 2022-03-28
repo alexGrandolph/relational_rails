@@ -9,8 +9,13 @@ class SkiMaker < ApplicationRecord
     order('created_at DESC')
   end
 
-  # def self.number_of_skis
-  #   self.skis.count
-  # end
+  def sort_alpha
+    skis = self.skis
+    sorted = skis.order(:model)
+    sorted
+    # require "pry"; binding.pry
+  end
 
 end
+
+   # Ski.order(:model)
