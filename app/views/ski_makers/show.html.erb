@@ -3,7 +3,7 @@
 <h1><%= @ski_maker.company_name %></h1>
 <p>Years Active: <%= @ski_maker.years_active %></p>
 <p>Makes Snowboards?: <%= @ski_maker.makes_snowboards %></p>
-<p>Skis Available: <%= @count %></p>
+<p>Skis Available: <%= @ski_maker.skis_count %></p>
 <%= link_to 'See These Skis!', "/ski_makers/#{@ski_maker.id}/skis" %>
 <br><br>
 <%= link_to 'Edit This Brand', "/ski_makers/#{@ski_maker.id}/edit" %>

@@ -46,7 +46,7 @@ RSpec.describe 'can update a ski_maker(parent)' do
 
       click_on "Update"
 
-      save_and_open_page
+      # save_and_open_page
 
       expect(current_path).to eq("/ski_makers/#{line.id}")
       expect(page).to have_content('Line Skis')

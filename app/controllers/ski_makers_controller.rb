@@ -7,8 +7,6 @@ class SkiMakersController < ApplicationController
 
   def show
     @ski_maker = SkiMaker.find(params[:id])
-    @count = @ski_maker.skis.count
-
   end
 
   def new
