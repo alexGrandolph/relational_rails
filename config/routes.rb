@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get '/skis/:id/edit', to: 'skis#edit'
   patch '/skis/:id', to: 'skis#update'
+  delete '/skis/:id', to: 'skis#destroy'
 
   get '/skis', to: 'skis#index'
   get '/skis/:id', to: 'skis#show'
