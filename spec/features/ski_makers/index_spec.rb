@@ -99,5 +99,31 @@ RSpec.describe 'the /ski_makers index page' do
       expect(current_path).to eq("/ski_makers/#{line.id}/edit")
     end
 
+    it 'has a delete link to delete each ski maker' do
+      Ski.destroy_all
+      SkiMaker.destroy_all
+      faction = SkiMaker.create!(company_name: "Faction", years_active: 13, makes_snowboards: false)
+      line = SkiMaker.create!(company_name: "Line", years_active: 15, makes_snowboards: false)
+      _1000 = SkiMaker.create!(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
+      icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
+
+      agent = faction.skis.create!(model: "Agent", ski_type: "Park", longest_offered_cm: 195, symmetrical: true)
+      blade = line.skis.create!(model: "BLADE", ski_type: "Powder", longest_offered_cm: 215, symmetrical: false)
+      park = _1000.skis.create!(model: "Park", ski_type: "Park/Pipe", longest_offered_cm: 199, symmetrical: true)
+      madien = icelantic.skis.create!(model: "Madien", ski_type: "Park", longest_offered_cm: 178, symmetrical: true)
+
+      visit "/ski_makers/"
+
+      within("#{_1000.company_name}") do
+        click_on "DELETE"
+      end
+
+      expect(current_path).to eq("/ski_makers")
+      expect(page).to_not have_content("#{_1000.company_name}")
+      expect(page).to have_content("#{line.company_name}")
+      expect(page).to have_content("#{faction.company_name}")  
+
+    end
+
 
 end
