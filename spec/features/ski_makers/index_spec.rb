@@ -21,12 +21,7 @@ RSpec.describe 'the /ski_makers index page' do
     line = SkiMaker.create!(company_name: "Line", years_active: 15, makes_snowboards: false)
     thousand = SkiMaker.create(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
 
-    # agent = faction.skis.create!(model: "Agent", ski_type: "Park", longest_offered_cm: 195, symmetrical: true)
-    # prodigy = faction.skis.create!(model: "Prodigy", ski_type: "Park", longest_offered_cm: 198, symmetrical: true)
-    # ct = faction.skis.create!(model: "CT 2.0", ski_type: "Backcountry", longest_offered_cm: 213, symmetrical: false)
-
     visit "/ski_makers/"
-    save_and_open_page
 
     expect(page).to have_content("Added to Site: #{faction.created_at}")
     expect("#{thousand.company_name}").to appear_before("#{line.company_name}")
@@ -90,9 +85,10 @@ RSpec.describe 'the /ski_makers index page' do
       fill_in 'Do They Make Snowboards?', with: false
 
       click_on 'Add Brand'
-
+      save_and_open_page
       expect(current_path).to eq("/ski_makers/")
       expect(page).to have_content("Armada")
+      expect("Armada").to appear_before("#{icelantic.company_name}")
 
     end
 
