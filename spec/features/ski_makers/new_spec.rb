@@ -22,7 +22,7 @@ RSpec.describe 'New Ski Maker' do
       fill_in 'Do They Make Snowboards? (true or false)', with: false
 
       click_on 'Add Brand'
-      save_and_open_page
+      # save_and_open_page
       expect(current_path).to eq("/ski_makers/")
       expect(page).to have_content("Armada")
       expect("Armada").to appear_before("#{icelantic.company_name}")

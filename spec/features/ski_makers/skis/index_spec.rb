@@ -13,7 +13,6 @@ RSpec.describe 'the /ski_makes/:id/skis' do
     ski_5 = ski_maker2.skis.create(model: "All MTN", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
     visit "/ski_makers/#{ski_maker1.id}/skis"
-    # save_and_open_page
 
     expect(page).to have_content(ski_1.model)
     expect(page).to have_content(ski_1.ski_type)
@@ -79,7 +78,6 @@ RSpec.describe 'the /ski_makes/:id/skis' do
     click_on 'Sort Alphabetically'
     expect(current_path).to eq("/ski_makers/#{icelantic.id}/skis")
 
-    # save_and_open_page
     expect("Model Name: #{madien.model}").to appear_before("Model Name: #{nomad.model}")
     expect("Model Name: #{saba.model}").to appear_before("Model Name: #{shaman.model}")
   end
@@ -148,7 +146,7 @@ RSpec.describe 'the /ski_makes/:id/skis' do
     within "#ski-#{dumont.model}" do
       click_on "DELETE"
     end
-    
+
     expect(current_path).to eq("/skis")
     expect(page).to_not have_content("Model Name: #{dumont.model}")
     expect(page).to have_content("Model Name: #{spark.model}")
