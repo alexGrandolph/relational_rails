@@ -7,15 +7,7 @@ class Ski < ApplicationRecord
   validates :symmetrical, inclusion: [true, false]
 
   def self.all_true
-    # require "pry"; binding.pry
     Ski.where(symmetrical: true)
-
   end
-
-  # def sort_alpha
-  #   Ski.order(:model)
-  # end
-
-
 
 end

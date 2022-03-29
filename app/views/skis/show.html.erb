@@ -5,7 +5,10 @@
 Largest Available Size: <%= @ski.longest_offered_cm %><br>
 Symmetrical? <%= @ski.symmetrical %></p>
 
-<br>
-<br>
+<!-- <br> -->
+<!-- <br> -->
 
 <%= link_to 'Update Ski', "/skis/#{@ski.id}/edit" %>
+<br>
+<br>
+<%= link_to 'DELETE', "/skis/#{@ski.id}", method: :delete %>

@@ -7,8 +7,6 @@ class SkiMakersController < ApplicationController
 
   def show
     @ski_maker = SkiMaker.find(params[:id])
-    @count = @ski_maker.skis.count
-
   end
 
   def new
@@ -37,6 +35,11 @@ class SkiMakersController < ApplicationController
       })
     updated_maker.save
     redirect_to "/ski_makers/#{updated_maker.id}"
+  end
+
+  def destroy
+    SkiMaker.destroy(params[:id])
+    redirect_to '/ski_makers'
   end
 
 

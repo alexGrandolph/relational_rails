@@ -50,7 +50,30 @@ RSpec.describe SkiMaker, type: :model do
       saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
       expect(icelantic.sort_alpha).to eq([maiden, nomad, saba, shaman])
+    end
 
+    it 'returns all skis over a given length' do
+      Ski.destroy_all
+      SkiMaker.destroy_all
+
+      icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
+
+      nomad = icelantic.skis.create!(model: "Nomad", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)
+      shaman = icelantic.skis.create!(model: "Shaman", ski_type: "Powder", longest_offered_cm: 209, symmetrical: false)
+      maiden = icelantic.skis.create!(model: "Madien", ski_type: "Park", longest_offered_cm: 178, symmetrical: true)
+      saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
+
+      expect(icelantic.over_given_length(200)).to eq([shaman, saba])
+    end
+
+    it 'has a method to return the count of a makers skis' do
+      Ski.destroy_all
+      SkiMaker.destroy_all
+      line = SkiMaker.create!(company_name: "Line", years_active: 15, makes_snowboards: false)
+      blade = line.skis.create!(model: "BLADE", ski_type: "Powder", longest_offered_cm: 215, symmetrical: false)
+      tom = line.skis.create!(model: "Tom Wallisch Pro", ski_type: "Park", longest_offered_cm: 205, symmetrical: true)
+      chronic = line.skis.create!(model: "Chronic", ski_type: "Park", longest_offered_cm: 204, symmetrical: true)
+      expect(line.skis_count).to eq(3)
     end
   end
 end

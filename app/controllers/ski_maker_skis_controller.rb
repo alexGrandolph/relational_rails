@@ -2,10 +2,15 @@ class SkiMakerSkisController < ApplicationController
 
 
   def index
-    # @ski_maker = SkiMaker.find(params[:id])
+
     if params[:sort] == 'alpha'
       @ski_maker = SkiMaker.find(params[:id])
       @skis = @ski_maker.sort_alpha
+
+    elsif params[:longest_offered_cm]
+      length = params[:longest_offered_cm]
+      @ski_maker = SkiMaker.find(params[:id])
+      @skis = @ski_maker.over_given_length(length)
       # require "pry"; binding.pry
     else
       @ski_maker = SkiMaker.find(params[:id])

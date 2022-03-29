@@ -45,4 +45,25 @@ RSpec.describe 'the /skis/:id show page' do
     expect(current_path).to eq("/ski_makers/")
   end
 
+  it 'has clickable link to destroy current ski' do
+    Ski.destroy_all
+    SkiMaker.destroy_all
+
+    salomon = SkiMaker.create!(company_name: "Salomon", years_active: 35, makes_snowboards: true)
+    spark = salomon.skis.create!(model: "QST Spark", ski_type: "Park", longest_offered_cm: 189, symmetrical: true)
+    blank = salomon.skis.create!(model: "QST Blank", ski_type: "All Mountain", longest_offered_cm: 202, symmetrical: false)
+
+    visit "/skis/#{blank.id}"
+    click_on 'DELETE'
+
+    expect(current_path).to eq("/skis")
+    # save_and_open_page
+
+    expect(page).to_not have_content("Model Name: #{blank.model}")
+    expect(page).to_not have_content("Longest Size Available: #{blank.longest_offered_cm}")
+
+    expect(page).to have_content("Model Name: #{spark.model}")
+    expect(page).to have_content("Longest Size Available: #{spark.longest_offered_cm}")
+  end
+
 end

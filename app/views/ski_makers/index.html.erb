@@ -2,5 +2,12 @@
 <%= link_to 'Add a Brand', '/ski_makers/new/' %>
 <h1>Ski Makers</h1>
 <% @ski_makers.each do |maker| %>
-  <%=maker.company_name%>  <strong>Added to Site: </strong><%= maker.created_at %> <%= link_to 'Edit', "/ski_makers/#{maker.id}/edit" %><br><br>
+  <div id="maker-<%= maker.company_name %>"> 
+    <%=maker.company_name%>
+    <strong>Added to Site: </strong>
+    <%= maker.created_at %>
+    <%= link_to 'Edit', "/ski_makers/#{maker.id}/edit" %>
+    <%= link_to 'DELETE', "/ski_makers/#{maker.id}", method: :delete %>
+    </div>
+    <br><br>
 <% end %>
