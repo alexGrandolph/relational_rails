@@ -9,7 +9,6 @@ RSpec.describe 'the /ski_makers index page' do
     ski_maker4 = SkiMaker.create(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
 
     visit "/ski_makers/"
-    # save_and_open_page
     expect(page).to have_content(ski_maker1.company_name)
     expect(page).to have_content(ski_maker2.company_name)
     expect(page).to have_content(ski_maker3.company_name)
@@ -18,14 +17,20 @@ RSpec.describe 'the /ski_makers index page' do
 
   it 'displays ski_makers in order by created_at and shows created at on page' do
     faction = SkiMaker.create!(company_name: "Faction", years_active: 13, makes_snowboards: false)
-    agent = faction.skis.create!(model: "Agent", ski_type: "Park", longest_offered_cm: 195, symmetrical: true)
-    prodigy = faction.skis.create!(model: "Prodigy", ski_type: "Park", longest_offered_cm: 198, symmetrical: true)
-    ct = faction.skis.create!(model: "CT 2.0", ski_type: "Backcountry", longest_offered_cm: 213, symmetrical: false)
+    icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
+    line = SkiMaker.create!(company_name: "Line", years_active: 15, makes_snowboards: false)
+    thousand = SkiMaker.create(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
+
+    # agent = faction.skis.create!(model: "Agent", ski_type: "Park", longest_offered_cm: 195, symmetrical: true)
+    # prodigy = faction.skis.create!(model: "Prodigy", ski_type: "Park", longest_offered_cm: 198, symmetrical: true)
+    # ct = faction.skis.create!(model: "CT 2.0", ski_type: "Backcountry", longest_offered_cm: 213, symmetrical: false)
 
     visit "/ski_makers/"
-    # save_and_open_page
+    save_and_open_page
 
     expect(page).to have_content("Added to Site: #{faction.created_at}")
+    expect("#{thousand.company_name}").to appear_before("#{line.company_name}")
+    expect("#{icelantic.company_name}").to appear_before("#{faction.company_name}")
   end
 
   it 'has clickable link to skis#index' do
