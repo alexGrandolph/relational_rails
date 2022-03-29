@@ -100,4 +100,30 @@ RSpec.describe 'the /skis index page' do
     expect(current_path).to eq("/skis/#{agent.id}/edit")
   end
 
+  it 'has a link to delete ski next to each ski, clicking refreshes page with ski destroyed' do
+
+    Ski.destroy_all
+    SkiMaker.destroy_all
+
+    faction = SkiMaker.create!(company_name: "Faction", years_active: 13, makes_snowboards: false)
+    agent = faction.skis.create!(model: "Agent", ski_type: "Park", longest_offered_cm: 195, symmetrical: true)
+
+    _1000 = SkiMaker.create!(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
+    park = _1000.skis.create!(model: "Park", ski_type: "Park/Pipe", longest_offered_cm: 199, symmetrical: true)
+    powder = _1000.skis.create!(model: "PWDER", ski_type: "Powder/Backcountry", longest_offered_cm: 211, symmetrical: false)
+
+    visit "/skis/"
+
+    within "#ski-#{powder.model}" do
+      click_on "DELETE"
+
+    end
+    save_and_open_page
+    expect(current_path).to eq("/skis")
+    expect(page).to_not have_content("Model Name: #{powder.model}")
+    expect(page).to have_content("Model Name: #{agent.model}")
+    expect(page).to have_content("Model Name: #{park.model}")
+  end
+
+
 end
