@@ -23,7 +23,7 @@ RSpec.describe 'the /ski_makers/:id show page' do
     visit "/ski_makers/#{faction.id}"
     # save_and_open_page
 
-    expect(page).to have_content('Skis Available: 3')
+    expect(page).to have_content("Skis Available: #{faction.skis_count}")
   end
 
   it 'has clickable link to skis#index' do
