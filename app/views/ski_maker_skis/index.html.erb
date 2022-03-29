@@ -6,8 +6,8 @@
 <br>
 
 <%= form_with(url: "/ski_makers/#{@ski_maker.id}/skis?search=length", method: "get") do %>
-  <%= label_tag(:length, "Show Skis Available Above This Length:") %>
-  <%= text_field_tag(:length) %>
+  <%= label_tag(:longest_offered_cm, "Show Skis Available Above This Length:") %>
+  <%= text_field_tag(:longest_offered_cm) %>
   <%= submit_tag("Only Return Skis Over This Length") %>
 <% end %>
 

@@ -63,7 +63,7 @@ RSpec.describe SkiMaker, type: :model do
       maiden = icelantic.skis.create!(model: "Madien", ski_type: "Park", longest_offered_cm: 178, symmetrical: true)
       saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
-      expect(icelantic.over_given_length).to eq([nomad, shaman, saba])
+      expect(icelantic.over_given_length(200)).to eq([shaman, saba])
     end
   end
 end

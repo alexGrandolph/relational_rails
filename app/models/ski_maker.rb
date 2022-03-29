@@ -17,6 +17,10 @@ class SkiMaker < ApplicationRecord
     # require "pry"; binding.pry
   end
 
-end
+  def over_given_length(length)
+    skis = self.skis
+    over = skis.where("longest_offered_cm > ?", length)
+    # require "pry"; binding.pry
+  end
 
-   # Ski.order(:model)
+end

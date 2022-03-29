@@ -110,7 +110,7 @@ RSpec.describe 'the /ski_makes/:id/skis' do
 
     nomad = icelantic.skis.create!(model: "Nomad", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)
     shaman = icelantic.skis.create!(model: "Shaman", ski_type: "Powder", longest_offered_cm: 209, symmetrical: false)
-    madien = icelantic.skis.create!(model: "Madien", ski_type: "Park", longest_offered_cm: 178, symmetrical: true)
+    maiden = icelantic.skis.create!(model: "Madien", ski_type: "Park", longest_offered_cm: 178, symmetrical: true)
     saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
     visit "/ski_makers/#{icelantic.id}/skis"
@@ -121,8 +121,8 @@ RSpec.describe 'the /ski_makes/:id/skis' do
 
     expect(current_path).to eq("/ski_makers/#{icelantic.id}/skis")
     save_and_open_page
-    expect(page).to_not have_content("Model Name: #{maden.model}")
-    expect(page).to_not have_content("Longest Offered Size: #{maden.longest_offered_cm}")
+    expect(page).to_not have_content("Model Name: #{maiden.model}")
+    expect(page).to_not have_content("Longest Offered Size: #{maiden.longest_offered_cm}")
 
     expect(page).to have_content("Model Name: #{nomad.model}")
     expect(page).to have_content("Longest Offered Size: #{nomad.longest_offered_cm}")

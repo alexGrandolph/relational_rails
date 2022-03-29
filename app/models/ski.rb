@@ -16,6 +16,8 @@ class Ski < ApplicationRecord
   #   Ski.order(:model)
   # end
 
-
+  # def over_given_length
+  #   require "pry"; binding.pry
+  # end
 
 end
