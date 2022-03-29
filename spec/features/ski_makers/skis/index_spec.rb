@@ -148,12 +148,11 @@ RSpec.describe 'the /ski_makes/:id/skis' do
     within "#ski-#{dumont.model}" do
       click_on "DELETE"
     end
-    save_and_open_page
+    
     expect(current_path).to eq("/skis")
     expect(page).to_not have_content("Model Name: #{dumont.model}")
     expect(page).to have_content("Model Name: #{spark.model}")
     expect(page).to have_content("Model Name: #{blank.model}")
   end
-# bundle exec rspec spec/features/ski_makers/skis/index_spec.rb:105
 
 end

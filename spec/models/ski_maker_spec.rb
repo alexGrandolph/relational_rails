@@ -65,5 +65,15 @@ RSpec.describe SkiMaker, type: :model do
 
       expect(icelantic.over_given_length(200)).to eq([shaman, saba])
     end
+
+    it 'has a method to return the count of a makers skis' do
+      Ski.destroy_all
+      SkiMaker.destroy_all
+      line = SkiMaker.create!(company_name: "Line", years_active: 15, makes_snowboards: false)
+      blade = line.skis.create!(model: "BLADE", ski_type: "Powder", longest_offered_cm: 215, symmetrical: false)
+      tom = line.skis.create!(model: "Tom Wallisch Pro", ski_type: "Park", longest_offered_cm: 205, symmetrical: true)
+      chronic = line.skis.create!(model: "Chronic", ski_type: "Park", longest_offered_cm: 204, symmetrical: true)
+      expect(line.skis_count).to eq(3)
+    end
   end
 end
