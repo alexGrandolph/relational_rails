@@ -141,22 +141,18 @@ RSpec.describe 'the /ski_makes/:id/skis' do
 
     spark = salomon.skis.create!(model: "QST Spark", ski_type: "Park", longest_offered_cm: 189, symmetrical: true)
     blank = salomon.skis.create!(model: "QST Blank", ski_type: "All Mountain", longest_offered_cm: 202, symmetrical: true)
-    dumont = salomon.skis.create!(model: "Dumont Pro", ski_type: "Park", longest_offered_cm: 177, symmetrical: true)
+    dumont = salomon.skis.create!(model: "Dumont", ski_type: "Park", longest_offered_cm: 177, symmetrical: true)
 
     visit "/ski_makers/#{salomon.id}/skis"
 
-    within "#ski-#{blank.model}" do
+    within "#ski-#{dumont.model}" do
       click_on "DELETE"
     end
     save_and_open_page
-    expect(current_path).to eq("/ski_makers/#{salomon.id}/skis")
-    expect(page).to_not have_content("Model Name: #{blank.model}")
+    expect(current_path).to eq("/skis")
+    expect(page).to_not have_content("Model Name: #{dumont.model}")
     expect(page).to have_content("Model Name: #{spark.model}")
-    expect(page).to have_content("Model Name: #{dumont.model}")
-
-
-
-
+    expect(page).to have_content("Model Name: #{blank.model}")
   end
 # bundle exec rspec spec/features/ski_makers/skis/index_spec.rb:105
 

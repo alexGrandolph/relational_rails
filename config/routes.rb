@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   get '/skis', to: 'skis#index'
   get '/skis/:id', to: 'skis#show'
   get '/ski_makers/:id/skis', to: 'ski_maker_skis#index'
+  # delete '/ski_makers/:id/skis', to: 'skis#destroy'
+
 
 end
