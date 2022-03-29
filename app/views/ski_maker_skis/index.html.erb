@@ -2,6 +2,14 @@
 <br>
 <br>
 <%= link_to 'Sort Alphabetically', "/ski_makers/#{@ski_maker.id}/skis?sort=alpha", method: :get %>
+<br>
+<br>
+
+<%= form_with(url: "/ski_makers/#{@ski_maker.id}/skis?search=length", method: "get") do %>
+  <%= label_tag(:length, "Show Skis Available Above This Length:") %>
+  <%= text_field_tag(:length) %>
+  <%= submit_tag("Only Return Skis Over This Length") %>
+<% end %>
 
 
 <h1><%= @ski_maker.company_name %></h1>

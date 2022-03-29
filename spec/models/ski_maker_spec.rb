@@ -50,7 +50,20 @@ RSpec.describe SkiMaker, type: :model do
       saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
       expect(icelantic.sort_alpha).to eq([maiden, nomad, saba, shaman])
+    end
 
+    it 'returns all skis over a given length' do
+      Ski.destroy_all
+      SkiMaker.destroy_all
+
+      icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
+
+      nomad = icelantic.skis.create!(model: "Nomad", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)
+      shaman = icelantic.skis.create!(model: "Shaman", ski_type: "Powder", longest_offered_cm: 209, symmetrical: false)
+      maiden = icelantic.skis.create!(model: "Madien", ski_type: "Park", longest_offered_cm: 178, symmetrical: true)
+      saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
+
+      expect(icelantic.over_given_length).to eq([nomad, shaman, saba])
     end
   end
 end

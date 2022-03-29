@@ -117,10 +117,10 @@ RSpec.describe 'the /ski_makes/:id/skis' do
 
     fill_in "Show Skis Available Above This Length:", with: 190
 
-    click_on 'Only return records with a longest offered cm over 190'
+    click_on 'Only Return Skis Over This Length'
 
     expect(current_path).to eq("/ski_makers/#{icelantic.id}/skis")
-
+    save_and_open_page
     expect(page).to_not have_content("Model Name: #{maden.model}")
     expect(page).to_not have_content("Longest Offered Size: #{maden.longest_offered_cm}")
 
@@ -131,6 +131,6 @@ RSpec.describe 'the /ski_makes/:id/skis' do
     expect(page).to have_content("Model Name: #{saba.model}")
     expect(page).to have_content("Longest Offered Size: #{saba.longest_offered_cm}")
   end
-# bundle exec rspec spec/features/ski_makers/skis/index_spec.rb:65
+# bundle exec rspec spec/features/ski_makers/skis/index_spec.rb:105
 
 end
