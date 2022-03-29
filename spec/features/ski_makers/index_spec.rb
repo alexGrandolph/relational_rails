@@ -114,14 +114,15 @@ RSpec.describe 'the /ski_makers index page' do
 
       visit "/ski_makers/"
 
-      within("#{_1000.company_name}") do
+      within "#maker-#{faction.company_name}" do
         click_on "DELETE"
-      end
 
+      end
+      save_and_open_page
       expect(current_path).to eq("/ski_makers")
-      expect(page).to_not have_content("#{_1000.company_name}")
+      expect(page).to_not have_content("#{faction.company_name}")
       expect(page).to have_content("#{line.company_name}")
-      expect(page).to have_content("#{faction.company_name}")  
+      expect(page).to have_content("#{_1000.company_name}")
 
     end
 
