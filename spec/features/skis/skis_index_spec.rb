@@ -94,9 +94,9 @@ RSpec.describe 'the /skis index page' do
     powder = _1000.skis.create!(model: "PWDER", ski_type: "Powder/Backcountry", longest_offered_cm: 211, symmetrical: false)
 
     visit "/skis/"
+    # save_and_open_page
 
     click_on "Edit #{agent.model}"
-    # save_and_open_page
     expect(current_path).to eq("/skis/#{agent.id}/edit")
   end
 
@@ -107,22 +107,24 @@ RSpec.describe 'the /skis index page' do
 
     faction = SkiMaker.create!(company_name: "Faction", years_active: 13, makes_snowboards: false)
     agent = faction.skis.create!(model: "Agent", ski_type: "Park", longest_offered_cm: 195, symmetrical: true)
+    ct = faction.skis.create!(model: "CT 2.0", ski_type: "Backcountry", longest_offered_cm: 213, symmetrical: true)
 
-    _1000 = SkiMaker.create!(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
+    _1000 = SkiMaker.create!(company_name: "1000 Skis", years_active: 2, makes_snowboards: true)
     park = _1000.skis.create!(model: "Park", ski_type: "Park/Pipe", longest_offered_cm: 199, symmetrical: true)
-    powder = _1000.skis.create!(model: "PWDER", ski_type: "Powder/Backcountry", longest_offered_cm: 211, symmetrical: false)
+    all_mtn = _1000.skis.create!(model: "All MTN", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: true)
+    # require "pry"; binding.pry
+    visit "/skis"
 
-    visit "/skis/"
-
-    within "#ski-#{powder.model}" do
+    within "#ski-#{park.model}" do
       click_on "DELETE"
-
     end
     save_and_open_page
     expect(current_path).to eq("/skis")
-    expect(page).to_not have_content("Model Name: #{powder.model}")
+    expect(page).to_not have_content("Model Name: Park}")
     expect(page).to have_content("Model Name: #{agent.model}")
-    expect(page).to have_content("Model Name: #{park.model}")
+    expect(page).to have_content("Model Name: #{ct.model}")
+    expect(page).to have_content("Model Name: #{all_mtn.model}")
+
   end
 
 
