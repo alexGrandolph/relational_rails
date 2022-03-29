@@ -21,4 +21,8 @@ class SkiMaker < ApplicationRecord
     over = skis.where("longest_offered_cm > ?", length)
   end
 
+  def skis_count
+    self.skis.count
+  end
+
 end
