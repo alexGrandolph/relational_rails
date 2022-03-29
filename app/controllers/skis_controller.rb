@@ -25,4 +25,9 @@ class SkisController < ApplicationController
     redirect_to "/skis/#{updated_ski.id}"
   end
 
+  def destroy
+    Ski.destroy(params[:id])
+      redirect_to "/skis"
+  end
+
 end
