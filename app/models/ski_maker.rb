@@ -3,7 +3,8 @@ class SkiMaker < ApplicationRecord
   validates_presence_of :years_active
   validates :makes_snowboards, inclusion: [true, false]
 
-  has_many :skis
+  has_many :skis,
+           dependent: :destroy
 
   def self.most_recent
     order('created_at DESC')

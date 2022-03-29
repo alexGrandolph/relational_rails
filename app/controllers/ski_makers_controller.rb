@@ -39,6 +39,11 @@ class SkiMakersController < ApplicationController
     redirect_to "/ski_makers/#{updated_maker.id}"
   end
 
+  def destroy
+    SkiMaker.destroy(params[:id])
+    redirect_to '/ski_makers'
+  end
+
 
 
 
