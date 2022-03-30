@@ -1,8 +1,8 @@
-<%= link_to 'See All Skis!', '/skis/' %>  <%= link_to 'See All Brands!', '/ski_makers/' %>
-<%= link_to 'Add a Brand', '/ski_makers/new/' %>
+<%= link_to 'See All Skis!', '/skis/' %>  <%= link_to 'See All Ski Makers!', '/ski_makers/' %>
+<%= link_to 'Add a Ski Maker', '/ski_makers/new/' %>
 <h1>Ski Makers</h1>
 <% @ski_makers.each do |maker| %>
-  <div id="maker-<%= maker.company_name %>"> 
+  <div id="maker-<%= maker.company_name %>">
     <%=maker.company_name%>
     <strong>Added to Site: </strong>
     <%= maker.created_at %>

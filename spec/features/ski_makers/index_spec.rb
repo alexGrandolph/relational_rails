@@ -49,7 +49,7 @@ RSpec.describe 'the /ski_makers index page' do
     saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
     visit "/ski_makers/"
-    click_on 'See All Brands'
+    click_on 'See All Ski Makers!'
 
     expect(current_path).to eq("/ski_makers/")
   end
@@ -63,7 +63,7 @@ RSpec.describe 'the /ski_makers index page' do
       saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
       visit "/ski_makers/"
-      click_on 'Add a Brand'
+      click_on 'Add a Ski Maker'
 
       expect(current_path).to eq("/ski_makers/new/")
     end
@@ -76,7 +76,7 @@ RSpec.describe 'the /ski_makers index page' do
       saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
       visit "/ski_makers/"
-      click_on 'Add a Brand'
+      click_on 'Add a Ski Maker'
 
       expect(current_path).to eq("/ski_makers/new/")
 
@@ -84,7 +84,7 @@ RSpec.describe 'the /ski_makers index page' do
       fill_in 'Years Active', with: 17
       fill_in 'Do They Make Snowboards?', with: false
 
-      click_on 'Add Brand'
+      click_on 'Add Ski Maker'
 
       expect(current_path).to eq("/ski_makers/")
       expect(page).to have_content("Armada")

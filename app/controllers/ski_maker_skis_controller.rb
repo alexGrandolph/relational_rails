@@ -24,12 +24,6 @@ class SkiMakerSkisController < ApplicationController
   def create
     @ski_maker = SkiMaker.find(params[:id])
     @new_ski = @ski_maker.skis.create(skis_params)
-    # @new_ski = @ski_maker.skis.create({
-    #   model: params[:ski][:model],
-    #   ski_type: params[:ski][:ski_type],
-    #   longest_offered_cm: params[:ski][:longest_offered_cm],
-    #   symmetrical: params[:ski][:symmetrical]
-    #   })
     @new_ski.save
     redirect_to "/ski_makers/#{@ski_maker.id}/skis/"
   end
@@ -39,13 +33,13 @@ class SkiMakerSkisController < ApplicationController
       params.require(:ski).permit(:model, :ski_type, :longest_offered_cm, :symmetrical)
     end
 
-
-
 end
 
-# /skis?order=alpha
-# if params[:order] == 'alpha'
-# skis.alphabatized
-#
-# else
-# skis.all
+
+
+# @new_ski = @ski_maker.skis.create({
+#   model: params[:ski][:model],
+#   ski_type: params[:ski][:ski_type],
+#   longest_offered_cm: params[:ski][:longest_offered_cm],
+#   symmetrical: params[:ski][:symmetrical]
+#   })
