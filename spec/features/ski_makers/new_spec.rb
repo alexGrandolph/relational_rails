@@ -13,7 +13,7 @@ RSpec.describe 'New Ski Maker' do
       saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
       visit "/ski_makers/"
-      click_on 'Add a Brand'
+      click_on 'Add a Ski Maker'
 
       expect(current_path).to eq("/ski_makers/new/")
 
@@ -21,7 +21,7 @@ RSpec.describe 'New Ski Maker' do
       fill_in 'Years Active', with: 17
       fill_in 'Do They Make Snowboards? (true or false)', with: false
 
-      click_on 'Add Brand'
+      click_on 'Add Ski Maker'
       # save_and_open_page
       expect(current_path).to eq("/ski_makers/")
       expect(page).to have_content("Armada")

@@ -31,7 +31,7 @@ blank = salomon.skis.create!(model: "QST Blank", ski_type: "All Mountain", longe
 #1000 skis
 park = _1000.skis.create!(model: "Park", ski_type: "Park/Pipe", longest_offered_cm: 199, symmetrical: true)
 all_mtn = _1000.skis.create!(model: "All MTN", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
-powder = _1000.skis.create!(model: "PWDER", ski_type: "Powder/Backcountry", longest_offered_cm: 211, symmetrical: false)
+backcountry = _1000.skis.create!(model: "Backcountry", ski_type: "Powder/Backcountry", longest_offered_cm: 211, symmetrical: false)
 
 #icelantic skis
 nomad = icelantic.skis.create!(model: "Nomad", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)

@@ -55,6 +55,8 @@ RSpec.describe 'Update a Ski' do
 
       # save_and_open_page
       expect(current_path).to eq("/skis/#{nomad.id}")
+      expect(page).to_not have_content("Nomad")
+      expect(page).to_not have_content("Largeset Available Size: 191")
       expect(page).to have_content("Pioneer")
       expect(page).to have_content("Ski Type: All Mountain")
       expect(page).to have_content("Largest Available Size: #{184}")

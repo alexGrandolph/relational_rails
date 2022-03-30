@@ -7,13 +7,11 @@ RSpec.describe SkiMaker, type: :model do
     it { should allow_values(true, false).for(:makes_snowboards)}
   end
 
-
-
   describe 'relationships' do
     it { should have_many :skis }
   end
 
-  describe 'methods' do
+  describe 'model methods' do
     it 'returns all the skis associated with a given parent' do
       ski_maker1 = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
       ski_maker2 = SkiMaker.create!(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
@@ -25,7 +23,6 @@ RSpec.describe SkiMaker, type: :model do
       ski_5 = ski_maker2.skis.create!(model: "All MTN", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
       expect(ski_maker1.skis).to eq([ski_1, ski_2, ski_3, ski_4])
-
     end
 
     it 'can order ski_makers by most recently created' do
@@ -75,5 +72,6 @@ RSpec.describe SkiMaker, type: :model do
       chronic = line.skis.create!(model: "Chronic", ski_type: "Park", longest_offered_cm: 204, symmetrical: true)
       expect(line.skis_count).to eq(3)
     end
+
   end
 end

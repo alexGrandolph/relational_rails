@@ -49,6 +49,7 @@ RSpec.describe 'can update a ski_maker(parent)' do
       expect(current_path).to eq("/ski_makers/#{line.id}")
       expect(page).to have_content('Line Skis')
       expect(page).to have_content("Years Active: 22")
+      expect(page).to_not have_content("Years Active: 15")
     end
   end
 

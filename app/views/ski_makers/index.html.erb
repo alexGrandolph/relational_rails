@@ -1,13 +1,26 @@
-<%= link_to 'See All Skis!', '/skis/' %>  <%= link_to 'See All Brands!', '/ski_makers/' %>
-<%= link_to 'Add a Brand', '/ski_makers/new/' %>
+
+<h3>
+
+<%= link_to 'See All Skis!', '/skis/' %>  |
+<%= link_to 'See All Ski Makers!', '/ski_makers/' %> |
+<%= link_to 'Add a Ski Maker', '/ski_makers/new/' %>
+
+</h3>
+
+
 <h1>Ski Makers</h1>
 <% @ski_makers.each do |maker| %>
-  <div id="maker-<%= maker.company_name %>"> 
-    <%=maker.company_name%>
+
+
+  <div id="maker-<%= maker.company_name %>">
+    <h2><%=maker.company_name%></h2>
     <strong>Added to Site: </strong>
-    <%= maker.created_at %>
-    <%= link_to 'Edit', "/ski_makers/#{maker.id}/edit" %>
-    <%= link_to 'DELETE', "/ski_makers/#{maker.id}", method: :delete %>
+    <%= maker.created_at %><br>
+    <h3><%= link_to 'See Their Skis!', "/ski_makers/#{maker.id}/skis" %></h3>
+    <%= link_to 'Edit', "/ski_makers/#{maker.id}/edit" %><br>
+    <br><%= link_to 'DELETE', "/ski_makers/#{maker.id}", method: :delete %>
     </div>
-    <br><br>
+    <br>
+
+
 <% end %>
