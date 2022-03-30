@@ -38,15 +38,3 @@ class SkiMakersController < ApplicationController
       params.require(:ski_maker).permit(:company_name, :years_active, :makes_snowboards)
     end
 end
-
-# new_maker = SkiMaker.new({
-#   company_name: params[:ski_maker][:company_name],
-#   years_active: params[:ski_maker][:years_active],
-#   makes_snowboards: params[:ski_maker][:makes_snowboards]
-#   })
-
-# updated_maker.update({
-#   company_name: params[:ski_maker][:company_name],
-#   years_active: params[:ski_maker][:years_active],
-#   makes_snowboards: params[:ski_maker][:makes_snowboards]
-#   })

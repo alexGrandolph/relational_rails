@@ -70,19 +70,7 @@ RSpec.describe 'New Ski' do
 
       expect("Model Name: Saba").to appear_before("Model Name: Pioneer")
 
-
-
-
-
-
-
     end
-
-
-
-
-
-
 
   end
 end

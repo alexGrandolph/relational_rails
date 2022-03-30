@@ -1,7 +1,6 @@
 class SkisController < ApplicationController
 
   def index
-    # @skis = Ski.all
     @skis = Ski.all_true
   end
 
@@ -28,15 +27,6 @@ class SkisController < ApplicationController
   private
     def ski_params
       params.require(:ski).permit(:model, :ski_type, :longest_offered_cm, :symmetrical)
-
     end
 
 end
-
-
-# updated_ski.update({
-#   model: params[:ski][:model],
-#   ski_type: params[:ski][:ski_type],
-#   longest_offered_cm: params[:ski][:longest_offered_cm],
-#   symmetrical: params[:ski][:symmetrical]
-#   })

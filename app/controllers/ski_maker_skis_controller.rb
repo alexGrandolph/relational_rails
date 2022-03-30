@@ -1,8 +1,6 @@
 class SkiMakerSkisController < ApplicationController
 
-
   def index
-
     if params[:sort] == 'alpha'
       @ski_maker = SkiMaker.find(params[:id])
       @skis = @ski_maker.sort_alpha
@@ -34,12 +32,3 @@ class SkiMakerSkisController < ApplicationController
     end
 
 end
-
-
-
-# @new_ski = @ski_maker.skis.create({
-#   model: params[:ski][:model],
-#   ski_type: params[:ski][:ski_type],
-#   longest_offered_cm: params[:ski][:longest_offered_cm],
-#   symmetrical: params[:ski][:symmetrical]
-#   })
