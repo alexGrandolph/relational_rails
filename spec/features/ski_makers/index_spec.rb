@@ -127,5 +127,30 @@ RSpec.describe 'the /ski_makers index page' do
 
     end
 
+    it 'has a link to see each makers respective skis page' do
+      Ski.destroy_all
+      SkiMaker.destroy_all
+      faction = SkiMaker.create!(company_name: "Faction", years_active: 13, makes_snowboards: false)
+      agent = faction.skis.create!(model: "Agent", ski_type: "Park", longest_offered_cm: 195, symmetrical: true)
+      prodigy = faction.skis.create!(model: "Prodigy", ski_type: "Park", longest_offered_cm: 198, symmetrical: true)
+      ct = faction.skis.create!(model: "CT 2.0", ski_type: "Backcountry", longest_offered_cm: 213, symmetrical: false)
+      line = SkiMaker.create!(company_name: "Line", years_active: 15, makes_snowboards: false)
+
+      blade = line.skis.create!(model: "BLADE", ski_type: "Powder", longest_offered_cm: 215, symmetrical: false)
+      tom = line.skis.create!(model: "Tom Wallisch Pro", ski_type: "Park", longest_offered_cm: 205, symmetrical: true)
+      chronic = line.skis.create!(model: "Chronic", ski_type: "Park", longest_offered_cm: 204, symmetrical: true)
+
+      visit "/ski_makers/"
+      within "#maker-#{faction.company_name}" do
+        click_on "See Their Skis"
+      end
+      save_and_open_page
+      expect(current_path).to eq("/ski_makers/#{faction.id}/skis")
+      expect(page).to have_content("#{agent.model}")
+      expect(page).to have_content("#{ct.model}")
+      expect(page).to_not have_content("#{blade.model}")
+
+    end
+
 
 end
