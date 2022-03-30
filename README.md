@@ -14,7 +14,8 @@
  Throughout the site there are links to create, edit/update, and destroy a Ski Maker or a pair of skis. And also functionality to sort a Ski Makers skis alphabetically, or to only see the skis they have over a given height in centimeters.
 
  The schema:
- ![](../../../../Desktop/Screen Shot 2022-03-29 at 5.09.13 PM.png)
+
+<img width="614" alt="Screen Shot 2022-03-29 at 5 09 13 PM" src="https://user-images.githubusercontent.com/96802470/160942573-b8dc7165-1dac-4aa3-8b32-4da083c07a21.png">
 
 
  A link to see the visual representation of the schema used can be found here: https://app.dbdesigner.net/designer/schema/509755
