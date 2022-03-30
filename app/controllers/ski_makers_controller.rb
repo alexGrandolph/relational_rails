@@ -30,11 +30,12 @@ class SkiMakersController < ApplicationController
 
   def update
     updated_maker = SkiMaker.find(params[:id])
-    updated_maker.update({
-      company_name: params[:ski_maker][:company_name],
-      years_active: params[:ski_maker][:years_active],
-      makes_snowboards: params[:ski_maker][:makes_snowboards]
-      })
+    updated_maker.update(maker_params)
+    # updated_maker.update({
+    #   company_name: params[:ski_maker][:company_name],
+    #   years_active: params[:ski_maker][:years_active],
+    #   makes_snowboards: params[:ski_maker][:makes_snowboards]
+    #   })
     updated_maker.save
     redirect_to "/ski_makers/#{updated_maker.id}"
   end
