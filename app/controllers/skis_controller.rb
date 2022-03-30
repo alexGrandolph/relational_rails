@@ -15,12 +15,7 @@ class SkisController < ApplicationController
 
   def update
     updated_ski = Ski.find(params[:id])
-    updated_ski.update({
-      model: params[:ski][:model],
-      ski_type: params[:ski][:ski_type],
-      longest_offered_cm: params[:ski][:longest_offered_cm],
-      symmetrical: params[:ski][:symmetrical]
-      })
+    updated_ski.update(ski_params)
     updated_ski.save
     redirect_to "/skis/#{updated_ski.id}"
   end
@@ -31,9 +26,17 @@ class SkisController < ApplicationController
   end
 
   private
-    def ski_parms
+    def ski_params
       params.require(:ski).permit(:model, :ski_type, :longest_offered_cm, :symmetrical)
 
     end
 
 end
+
+
+# updated_ski.update({
+#   model: params[:ski][:model],
+#   ski_type: params[:ski][:ski_type],
+#   longest_offered_cm: params[:ski][:longest_offered_cm],
+#   symmetrical: params[:ski][:symmetrical]
+#   })
