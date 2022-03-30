@@ -13,12 +13,14 @@ class SkiMakersController < ApplicationController
   end
 
   def create
-    new_maker = SkiMaker.new({
-      company_name: params[:ski_maker][:company_name],
-      years_active: params[:ski_maker][:years_active],
-      makes_snowboards: params[:ski_maker][:makes_snowboards]
-      })
-    new_maker.save
+    # require "pry"; binding.pry
+    @new_maker = SkiMaker.new(maker_params)
+    # new_maker = SkiMaker.new({
+    #   company_name: params[:ski_maker][:company_name],
+    #   years_active: params[:ski_maker][:years_active],
+    #   makes_snowboards: params[:ski_maker][:makes_snowboards]
+    #   })
+    @new_maker.save
     redirect_to '/ski_makers/'
   end
 
@@ -42,6 +44,10 @@ class SkiMakersController < ApplicationController
     redirect_to '/ski_makers'
   end
 
+  private
+    def maker_params
+      params.require(:ski_maker).permit(:company_name, :years_active, :makes_snowboards)
+    end
 
 
 
