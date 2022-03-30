@@ -25,9 +25,4 @@ class SkiMaker < ApplicationRecord
     self.skis.count
   end
 
-  # def self.most_recent_formatted
-  #   # require "pry"; binding.pry
-  #   created_at.strftime("%a-%b-%y-%I-%M")
-  # end
-
 end

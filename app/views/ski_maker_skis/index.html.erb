@@ -1,10 +1,11 @@
-
-<%= link_to 'See All Skis!', '/skis/' %> | <%= link_to 'See All Ski Makers!', '/ski_makers/' %>
-<br>
-<br>
+<h3>
+<%= link_to 'See All Skis!', '/skis/' %> |
+<%= link_to 'See All Ski Makers!', '/ski_makers/' %>
+</h3>
+<h3>
 <%= link_to 'Sort Alphabetically', "/ski_makers/#{@ski_maker.id}/skis?sort=alpha", method: :get %>
-<br>
-<br>
+</h3>
+
 
 <%= form_with(url: "/ski_makers/#{@ski_maker.id}/skis?search=length", method: "get", local: true) do %>
   <%= label_tag(:longest_offered_cm, "Show Skis Available Above This Length:") %>
@@ -23,5 +24,5 @@
 
 </div>
 <% end %>
-<br><
+<br>
 <h2><%= link_to 'Create Skis', "/ski_makers/#{@ski_maker.id}/skis/new/"%></h2>

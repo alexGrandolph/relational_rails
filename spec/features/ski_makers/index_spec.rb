@@ -24,6 +24,7 @@ RSpec.describe 'the /ski_makers index page' do
     visit "/ski_makers/"
 
     expect(page).to have_content("Added to Site: #{faction.created_at}")
+    expect(page).to have_content("Added to Site: #{line.created_at}")
     expect("#{thousand.company_name}").to appear_before("#{line.company_name}")
     expect("#{icelantic.company_name}").to appear_before("#{faction.company_name}")
   end
@@ -57,40 +58,37 @@ RSpec.describe 'the /ski_makers index page' do
 
   it 'has clickable link to ski_makers#new' do
     icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
-      nomad = icelantic.skis.create!(model: "Nomad", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)
-      shaman = icelantic.skis.create!(model: "Shaman", ski_type: "Powder", longest_offered_cm: 209, symmetrical: false)
-      madien = icelantic.skis.create!(model: "Madien", ski_type: "Park", longest_offered_cm: 178, symmetrical: true)
-      saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
+    line = SkiMaker.create!(company_name: "Line", years_active: 15, makes_snowboards: false)
+    thousand = SkiMaker.create(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
 
-      visit "/ski_makers/"
-      click_on 'Add a Ski Maker'
+    visit "/ski_makers/"
+    click_on 'Add a Ski Maker'
 
-      expect(current_path).to eq("/ski_makers/new/")
-    end
+    expect(current_path).to eq("/ski_makers/new/")
+  end
 
   it 'can fill out a form with a new ski_makers attritbutes' do
     icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
-      nomad = icelantic.skis.create!(model: "Nomad", ski_type: "Park", longest_offered_cm: 191, symmetrical: true)
-      shaman = icelantic.skis.create!(model: "Shaman", ski_type: "Powder", longest_offered_cm: 209, symmetrical: false)
-      madien = icelantic.skis.create!(model: "Madien", ski_type: "Park", longest_offered_cm: 178, symmetrical: true)
-      saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
-      visit "/ski_makers/"
-      click_on 'Add a Ski Maker'
+    visit "/ski_makers/"
+    click_on 'Add a Ski Maker'
 
-      expect(current_path).to eq("/ski_makers/new/")
+    expect(current_path).to eq("/ski_makers/new/")
 
-      fill_in 'Company Name', with: 'Armada'
-      fill_in 'Years Active', with: 17
-      fill_in 'Do They Make Snowboards?', with: false
+    fill_in 'Company Name', with: 'Armada'
+    fill_in 'Years Active', with: 17
+    fill_in 'Do They Make Snowboards?', with: false
+    click_on 'Add Ski Maker'
 
-      click_on 'Add Ski Maker'
+    expect(current_path).to eq("/ski_makers/")
 
-      expect(current_path).to eq("/ski_makers/")
-      expect(page).to have_content("Armada")
-      expect("Armada").to appear_before("#{icelantic.company_name}")
-
+    within "#maker-#{"Armada"}" do
+    expect(page).to have_content("Armada")
+    expect(page).to have_content("Added to Site:")
     end
+    expect("Armada").to appear_before("#{icelantic.company_name}")
+
+  end
 
     it 'has an edit button for every parent which goes to parent edit page' do
       line = SkiMaker.create!(company_name: "Line", years_active: 15, makes_snowboards: false)
@@ -107,11 +105,6 @@ RSpec.describe 'the /ski_makers index page' do
       line = SkiMaker.create!(company_name: "Line", years_active: 15, makes_snowboards: false)
       _1000 = SkiMaker.create!(company_name: "1000 Skis", years_active: 2, makes_snowboards: false)
       icelantic = SkiMaker.create!(company_name: "Icelantic", years_active: 15, makes_snowboards: false)
-
-      agent = faction.skis.create!(model: "Agent", ski_type: "Park", longest_offered_cm: 195, symmetrical: true)
-      blade = line.skis.create!(model: "BLADE", ski_type: "Powder", longest_offered_cm: 215, symmetrical: false)
-      park = _1000.skis.create!(model: "Park", ski_type: "Park/Pipe", longest_offered_cm: 199, symmetrical: true)
-      madien = icelantic.skis.create!(model: "Madien", ski_type: "Park", longest_offered_cm: 178, symmetrical: true)
 
       visit "/ski_makers/"
 
@@ -144,7 +137,7 @@ RSpec.describe 'the /ski_makers index page' do
       within "#maker-#{faction.company_name}" do
         click_on "See Their Skis"
       end
-      # save_and_open_page
+    
       expect(current_path).to eq("/ski_makers/#{faction.id}/skis")
       expect(page).to have_content("#{agent.model}")
       expect(page).to have_content("#{ct.model}")

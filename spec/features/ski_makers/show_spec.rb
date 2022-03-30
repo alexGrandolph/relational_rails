@@ -46,7 +46,7 @@ RSpec.describe 'the /ski_makers/:id show page' do
     saba = icelantic.skis.create!(model: "Saba", ski_type: "All Mountain", longest_offered_cm: 201, symmetrical: false)
 
     visit "/ski_makers/#{icelantic.id}"
-    click_on 'See All Brands!'
+    click_on 'See All Ski Makers!'
 
     expect(current_path).to eq("/ski_makers/")
   end
