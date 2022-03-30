@@ -30,4 +30,10 @@ class SkisController < ApplicationController
       redirect_to "/skis"
   end
 
+  private
+    def ski_parms
+      params.require(:ski).permit(:model, :ski_type, :longest_offered_cm, :symmetrical)
+
+    end
+
 end
