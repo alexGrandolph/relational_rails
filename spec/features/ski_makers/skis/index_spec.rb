@@ -56,7 +56,7 @@ RSpec.describe 'the /ski_makes/:id/skis' do
 
     visit "/ski_makers/#{icelantic.id}/skis"
     # save_and_open_page
-    click_on 'See All Brands!'
+    click_on 'See All Ski Makers!'
 
     expect(current_path).to eq("/ski_makers/")
   end

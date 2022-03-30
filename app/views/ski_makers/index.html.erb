@@ -1,14 +1,11 @@
 
-<div class="background">
+<h3>
 
-
-<div class="links">
-
-<%= link_to 'See All Skis!', '/skis/' %><br><br>
-<%= link_to 'See All Ski Makers!', '/ski_makers/' %><br><br>
+<%= link_to 'See All Skis!', '/skis/' %>    |
+<%= link_to 'See All Ski Makers!', '/ski_makers/' %> |
 <%= link_to 'Add a Ski Maker', '/ski_makers/new/' %>
 
-</div>
+</h3>
 
 
 <h1>Ski Makers</h1>
@@ -19,14 +16,11 @@
     <h2><%=maker.company_name%></h2>
     <strong>Added to Site: </strong>
     <%= maker.created_at %><br>
-    <%= link_to 'See Their Skis!', "/ski_makers/#{maker.id}/skis" %>
+    <%= link_to 'See Their Skis!', "/ski_makers/#{maker.id}/skis" %><br>
     <br><%= link_to 'Edit', "/ski_makers/#{maker.id}/edit" %><br>
     <br><%= link_to 'DELETE', "/ski_makers/#{maker.id}", method: :delete %>
     </div>
-    <br><br>
+    <br>
 
 
 <% end %>
-
-
-</div>

@@ -144,7 +144,7 @@ RSpec.describe 'the /ski_makers index page' do
       within "#maker-#{faction.company_name}" do
         click_on "See Their Skis"
       end
-      save_and_open_page
+      # save_and_open_page
       expect(current_path).to eq("/ski_makers/#{faction.id}/skis")
       expect(page).to have_content("#{agent.model}")
       expect(page).to have_content("#{ct.model}")
